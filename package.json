@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "localtunnel": "^2.0.0",
+    "lt": "^0.3.3",
+    "ngrok": "^3.2.5",
+    "serveo": "0.0.0"
+  }
 }

@@ -9,13 +9,14 @@
 <div style = "border: 1px solid lightskyblue; border-radius: 10px; width: 55em; margin: 2em auto auto auto">
     <div style=" width: 50em; height:40em; margin: 1em auto auto 1em;text-align: center;">
         <p style = "font-size: 34px; padding-bottom: 18px;"> Nauč se s námi anglicky! </p>
-        <input type = "button" id = "btn1" value = "1" style = " width: 25%; font-size:9em; ">
-        <input type = "button" id = "btn2" value = "2" style = " width: 25%; font-size:9em; margin-left: 30px;"> <br>
-        <input type = "button" id = "btn3" value = "3" style = " width: 25%; font-size:9em; margin-top: 30px;" >
-        <input type = "button" id = "btn4" value = "4" style = " width: 25%; font-size:9em; margin-top: 30px;
+        <input type = "button" id = "btn1" onClick = "checkGuess(this.value)" value = "1" style = " width: 25%; font-size:9em; ">
+
+        <input type = "button" id = "btn2" onClick = "checkGuess(this.value)" value = "2" style = " width: 25%; font-size:9em; margin-left: 30px;"> <br>
+        <input type = "button" id = "btn3" onClick = "checkGuess(this.value)" value = "3" style = " width: 25%; font-size:9em; margin-top: 30px;" >
+        <input type = "button" id = "btn4" onClick = "checkGuess(this.value)" value = "4" style = " width: 25%; font-size:9em; margin-top: 30px;
          margin-left: 30px;" > <br>
 
-        <input type = "text" id = "message" value = "" disabled = "disabled" style = " width: 25%; font-size:5em; margin-top: 55px;" >
+        <input type = "text" id = "message" value = ""  disabled = "disabled" style = " width: 25%; font-size:5em; margin-top: 55px;" >
 
     </div>
 </div>
