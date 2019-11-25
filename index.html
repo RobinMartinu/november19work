@@ -5,10 +5,11 @@
     <title> Homepage</title>
     <script src = "homepage.js"></script>
 </head>
-<body onload = "load()">
+<body onload = "intro()">
 <div style = "border: 1px solid lightskyblue; border-radius: 10px; width: 55em; margin: 2em auto auto auto">
     <div style=" width: 50em; height:40em; margin: 1em auto auto 1em;text-align: center;">
-        <p style = "font-size: 34px; padding-bottom: 18px;"> Nauč se s námi anglicky! </p>
+        <p  id = "goal" style = "font-size: 34px; padding-bottom: 18px;"> Nauč se s námi anglicky! </p>
+
         <input type = "button" id = "btn1" onClick = "checkGuess(this.value)" value = "1" style = " width: 25%; font-size:9em; ">
 
         <input type = "button" id = "btn2" onClick = "checkGuess(this.value)" value = "2" style = " width: 25%; font-size:9em; margin-left: 30px;"> <br>

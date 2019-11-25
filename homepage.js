@@ -1,11 +1,19 @@
 const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
 let numbersRight = 0;
+
+function intro (){
+    alert ("Procvičte si s námi angličtinu, klikněte na číslici, jejíž jméno se Vám ukáže.");
+    load();
+
+}
 function load (){
+
     fetch(HOST + "/cislo/newguess").then(function(response) {
         return response.text().then(function(text) {
             let obj = JSON.parse(text);
 
-            alert (obj.message);
+            document.getElementById("goal").innerText = obj.message;
+
 
         });
     });
@@ -35,14 +43,14 @@ function checkGuess(guess) {
 }
 
 function win (){
-    alert("Blahopřejeme, vyhráli jste!");
-    setTimeout(newGame,2000);
+    document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste!";
+    newGame();
 
 }
 
 function newGame (){
     document.getElementById("message").value = "";
-    load();
+    intro();
 }
 
 
