@@ -65,4 +65,4 @@ http.createServer((req, res) => {
         res.writeHead(200, {"Content-type": "text/html"});
         res.end("<html lang='cs'><head><meta charset='UTF8'></head><body> Nothing here</body></html>");
     }
-}).listen(8888);
+}).listen(8080);
