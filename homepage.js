@@ -1,5 +1,6 @@
 const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
 let numbersRight = 0;
+let id = "";
 
 function intro (){
     alert ("Procvičte si s námi angličtinu, klikněte na číslici, jejíž jméno se Vám ukáže.");
@@ -13,6 +14,7 @@ function load (){
             let obj = JSON.parse(text);
 
             document.getElementById("goal").innerText = obj.message;
+            id = obj.id;
 
 
         });
@@ -21,7 +23,7 @@ function load (){
 
 function checkGuess(guess) {
 
-    let url = HOST + "/cislo/guessnumber?guess=" + guess;
+    let url = HOST + "/cislo/guessnumber?guess=" + guess + "&id=" + id;
 
      fetch(url).then(function(response) {
         return response.text().then(function(text) {
