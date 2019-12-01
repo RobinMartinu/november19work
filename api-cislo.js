@@ -2,6 +2,10 @@ const url = require('url');
 
 let ids = [];
 
+// occasionally clears the array to save memory
+// also sets max users online
+let maxUsers = 100;
+
 
 function nahodneCisloOdDo(minimum, maximum) {
     return minimum + Math.trunc((maximum-minimum+1)*Math.random());
@@ -13,6 +17,13 @@ exports.apiCislo = function(req, res){
 
     if (q.pathname === "/cislo/newguess") {
         res.writeHead(200, {"Content-type": "application/json", "Access-Control-Allow-Origin":"*"});
+
+
+        if (ids.length > maxUsers){
+            ids = [];
+        }
+
+
         let obj = {};
         let guess = {};
         let number = nahodneCisloOdDo(1, 4);
@@ -32,7 +43,10 @@ exports.apiCislo = function(req, res){
 
         obj.message = guess.message;
         obj.id = ids.push(guess)-1;
-        console.log(ids);
+
+        // debug what saves into array, should be in form
+        // [ {guessed: 1, message: 'One'} ]
+       // console.log(ids);
 
 
         res.end(JSON.stringify(obj));
@@ -42,9 +56,21 @@ exports.apiCislo = function(req, res){
         let obj = {};
         let q = url.parse(req.url, true);
         let isGuessed = false;
-            if (q.query["guess"] && (q.query["guess"] == ids[Number(q.query["id"])].guessed)){
-                isGuessed = true;
-            }
+        let id = Number(q.query["id"]);
+        let idValid = false;
+
+        //checks for validity of ID in case of deleting the array
+        if (id < ids.length){
+            idValid = true;
+        } else {
+            isGuessed = undefined;
+        }
+        console.log('ID Valid:' + idValid);
+
+        if ( idValid && q.query["guess"] && (q.query["guess"] == ids[id].guessed)) {
+            isGuessed = true;
+        }
+
         obj.isRight = isGuessed;
         res.end(JSON.stringify(obj));
 

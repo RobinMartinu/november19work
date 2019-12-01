@@ -38,7 +38,11 @@ function checkGuess(guess) {
                     } else {
                         load();
                     }
-            }
+            } else if (obj.isRight == undefined) {
+                    // should refresh the page if fetch returns undefined
+                        alert ('Něco se pokazilo, moc se omlouváme a obnovujeme stránku');
+                        location.reload();
+                    }
 
         });
     });
