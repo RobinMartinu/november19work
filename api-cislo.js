@@ -1,6 +1,9 @@
 const url = require('url');
 
 let ids = [];
+let timerArr = [];
+
+
 
 // occasionally clears the array to save memory
 // also sets max users online
@@ -74,6 +77,28 @@ exports.apiCislo = function(req, res){
         obj.isRight = isGuessed;
         res.end(JSON.stringify(obj));
 
+    } else if (q.pathname === "/cislo/timerstart"){
+        res.writeHead(200, {"Content-type": "application/json", "Access-Control-Allow-Origin":"*"});
+        let obj = {};
+        let timer = {};
+
+        if (timerArr.length > maxUsers){
+            timerArr = [];
+        }
+
+        timer.start = new Date().getTime();
+        obj.id = timerArr.push(timer) - 1;
+        obj.startTime = timer.start;
+
+        res.end(JSON.stringify(obj));
+
+
+    }
+    else if (q.pathname === "/cislo/timerstop"){
+        res.writeHead(200, {"Content-type": "application/json", "Access-Control-Allow-Origin":"*"});
+        let obj = {};
+
+        let timerEnd = new Date().getTime()
     }
 
 };

@@ -1,10 +1,23 @@
 const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
+
 let numbersRight = 0;
 let id = "";
+let idTimer = "";
 
 function intro (){
     alert ("Procvičte si s námi angličtinu, klikněte na číslici, jejíž jméno se Vám ukáže.");
     load();
+
+    fetch(HOST + "/cislo/timerstart").then(function(response) {
+        return response.text().then(function(text) {
+            let obj = JSON.parse(text);
+
+
+            idTimer = obj.id;
+
+
+        });
+    });
 
 }
 function load (){
@@ -19,6 +32,9 @@ function load (){
 
         });
     });
+
+
+
 }
 
 function checkGuess(guess) {
@@ -49,6 +65,10 @@ function checkGuess(guess) {
 }
 
 function win (){
+    let timerEnd;
+
+
+
     document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste!";
     newGame();
 
