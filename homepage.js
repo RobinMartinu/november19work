@@ -69,16 +69,18 @@ function win (){
     let timerEnd = "";
     let url = HOST + "/cislo/timerstop?idTimer=" + idTimer;
 
-    fetch(url).then(function(response) {
-        return response.text().then(function(text) {
+     fetch(url).then(function(response) {
+        response.text().then(function(text) {
             let obj = JSON.parse(text);
             timerEnd = obj.timerDur;
+            document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste za: " + timerEnd + " s";
+
+            setTimeout(newGame, 2000);
         });
     });
 
-    document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste za: " + timerEnd;
 
-    setTimeout(newGame, 2000);
+
 
 }
 
