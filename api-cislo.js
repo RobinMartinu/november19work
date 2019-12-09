@@ -1,3 +1,4 @@
+
 const url = require('url');
 
 let ids = [];
@@ -96,9 +97,16 @@ exports.apiCislo = function(req, res){
     }
     else if (q.pathname === "/cislo/timerstop"){
         res.writeHead(200, {"Content-type": "application/json", "Access-Control-Allow-Origin":"*"});
+        let q = url.parse(req.url, true);
         let obj = {};
+        let timerEnd = new Date().getTime();
 
-        let timerEnd = new Date().getTime()
+        let idTimer = q.query["idTimer"];
+        let timerDur = ((timerEnd - timerArr[idTimer].start) / 1000).toFixed(1);
+
+        obj.timerDur = timerDur;
+
+        res.end (JSON.stringify(obj));
     }
 
 };

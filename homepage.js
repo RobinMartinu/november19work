@@ -1,3 +1,4 @@
+
 const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
 
 let numbersRight = 0;
@@ -48,13 +49,13 @@ function checkGuess(guess) {
             if (obj.isRight) {
                     document.getElementById("message").value += guess;
                     numbersRight++;
-                    if (numbersRight == 4){
+                    if (numbersRight === 4){
                         numbersRight = 0;
                         win();
                     } else {
                         load();
                     }
-            } else if (obj.isRight == undefined) {
+            } else if (obj.isRight === undefined) {
                     // should refresh the page if fetch returns undefined
                         alert ('Něco se pokazilo, moc se omlouváme a obnovujeme stránku');
                         location.reload();
@@ -65,12 +66,19 @@ function checkGuess(guess) {
 }
 
 function win (){
-    let timerEnd;
+    let timerEnd = "";
+    let url = HOST + "/cislo/timerstop?idTimer=" + idTimer;
 
+    fetch(url).then(function(response) {
+        return response.text().then(function(text) {
+            let obj = JSON.parse(text);
+            timerEnd = obj.timerDur;
+        });
+    });
 
+    document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste za: " + timerEnd;
 
-    document.getElementById("goal").innerText = "Blahopřejeme, vyhráli jste!";
-    newGame();
+    setTimeout(newGame, 2000);
 
 }
 
