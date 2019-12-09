@@ -45,6 +45,11 @@ http.createServer((req, res) => {
         processStaticFiles(res, "/index.html");
         return;
     }
+    if (q.pathname == "/clicker") {
+
+        processStaticFiles(res, "/nextGame.html");
+        return;
+    }
     if (q.pathname.lastIndexOf(".") > -1 && q.pathname.length - q.pathname.lastIndexOf(".") < 6){
 
         processStaticFiles(res, req.url);
