@@ -5,7 +5,24 @@ let numbersRight = 0;
 let id = "";
 let idTimer = "";
 
+
+function listener(){
+window.addEventListener('scroll', function( event ) {
+    let header = document.getElementById("stickyHeader");
+    let sticky = header.offsetTop;
+
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+} );
+    }
+
+
+
 function intro (){
+    listener();
     alert ("Procvičte si s námi angličtinu, klikněte na číslici, jejíž jméno se Vám ukáže.");
     load();
 

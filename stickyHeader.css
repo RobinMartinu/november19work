@@ -1,0 +1,20 @@
+.header {
+    padding: 10px 16px;
+    background: slategrey;
+    color: darkblue;
+    width: 10%;
+
+}
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    top: 10px;
+    width: 10%;
+}
+.sticky + .content {
+    padding-top: 102px;
+}
