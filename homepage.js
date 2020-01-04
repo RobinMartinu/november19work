@@ -22,6 +22,8 @@ window.addEventListener('scroll', function( event ) {
 
 
 function intro (){
+    document.getElementById("clickerLink").href = HOST + "/clicker";
+
     listener();
     alert ("Procvičte si s námi angličtinu, klikněte na číslici, jejíž jméno se Vám ukáže.");
     load();
